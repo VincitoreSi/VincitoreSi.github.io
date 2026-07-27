@@ -4,6 +4,7 @@
 .meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s3) var(--s6); padding-bottom: var(--s4); color: var(--muted); }
 .links { display: flex; flex-wrap: wrap; gap: var(--s4); margin-left: auto; }
 .links a { color: var(--ink); }
+.work { color: var(--accent) !important; }
 
 @media (max-width: 720px) {
   .links { margin-left: 0; }

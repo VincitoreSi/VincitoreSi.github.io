@@ -1,0 +1,5 @@
+.top { display: flex; align-items: center; justify-content: space-between; padding: var(--s4) 0 var(--s3); }
+.back { color: var(--muted); }
+.head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s4); padding: var(--s6) 0 var(--s4); }
+.count { color: var(--muted); flex-shrink: 0; }
+.lede { color: var(--muted); padding-bottom: var(--s5); }

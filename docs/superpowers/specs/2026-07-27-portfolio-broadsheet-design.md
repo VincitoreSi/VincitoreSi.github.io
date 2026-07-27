@@ -130,18 +130,30 @@ OS setting, not by reading the CSS. The common failure — elements stranded at
 
 ## 5. Structure
 
-### Home — one long page
+### Home — profile, in résumé order
+
+Revised 2026-07-27 at the user's request: the home page follows résumé ordering, leading
+with experience and education, and the project index moves to its own route at `/work/`.
+A separate page rather than an in-page tab strip, because a JavaScript tab widget would
+break the no-JS readability the rest of the site holds to and contradicts the document
+metaphor. A link is a page; a tab is an app.
 
 | # | Section | Content |
 |---|---|---|
-| — | Masthead | Name, role, location, links. No nav bar; the page is the nav. |
+| — | Masthead | Name, role, location, links. First link is Selected Work, set in accent. |
 | — | Lede | Two columns of prose: Samsung R&D and the RAG work; IIT Jodhpur and the metrics. |
-| 01 | Selected Work | Project index. Uniform card, described below. |
-| 02 | Experience | Samsung R&D, four subsections (GenAI & RAG, AI Learning Platforms, Diagnostics, Tizen C/C++). |
-| 03 | Education | IIT Jodhpur, B.Tech AI & Data Science, coursework. |
-| 04 | Technical | Skills as a set-in-mono index, grouped, not as badge pills. |
-| 05 | Certifications | Six entries, right-aligned dates, as a bibliography. |
+| 01 | Experience | Samsung R&D, four subsections (GenAI & RAG, AI Learning Platforms, Diagnostics, Tizen C/C++). |
+| 02 | Education | IIT Jodhpur, B.Tech AI & Data Science, coursework. |
+| 03 | Technical | Skills as a set-in-mono index, grouped, not as badge pills. |
+| 04 | Certifications | Six entries, right-aligned dates, as a bibliography. |
+| — | Work teaser | One accented block linking to `/work/`. |
 | — | Colophon | Contact, resume PDF, repo link, and a genuine colophon note (typefaces used). |
+
+### `/work/` — the project index
+
+Its own route, reached from the masthead and from the teaser. Compact header with a
+back-link, the title *Selected Work*, a one-sentence lede, then all fifteen uniform
+cards, each linking to `/work/[slug]`.
 
 The colophon is not decoration. A monograph names its typefaces; doing so signals the
 design is deliberate, and it is the cheapest possible proof that a human made choices.

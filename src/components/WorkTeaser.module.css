@@ -1,0 +1,14 @@
+.teaser { padding-top: var(--s7); }
+.link { display: grid; gap: var(--s3); padding: var(--s6) 0 var(--s5); }
+.kicker { color: var(--accent); }
+.line { max-width: 22ch; transition: color 0.3s; }
+.go { display: inline-flex; align-items: center; gap: var(--s3); color: var(--muted); transition: color 0.3s; }
+.go svg { transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1); }
+
+.link:hover .line { color: var(--accent); }
+.link:hover .go { color: var(--ink); }
+.link:hover .go svg { transform: translateX(6px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .line, .go, .go svg { transition: none; }
+}
