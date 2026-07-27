@@ -1,0 +1,9 @@
+.row { display: grid; grid-template-columns: auto 1fr auto; align-items: baseline; gap: var(--s3); padding: var(--s3) 0; border-bottom: 1px solid var(--rule); }
+.title { max-width: none; }
+.dots { border-bottom: 1px dotted var(--rule); transform: translateY(-4px); }
+.date { color: var(--muted); }
+
+@media (max-width: 620px) {
+  .row { grid-template-columns: 1fr; gap: var(--s1); }
+  .dots { display: none; }
+}

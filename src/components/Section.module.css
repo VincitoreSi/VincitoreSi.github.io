@@ -1,0 +1,5 @@
+.section { padding: var(--s7) 0 0; }
+.head { display: flex; align-items: baseline; gap: var(--s4); }
+.number { color: var(--accent); }
+.title { flex: 1; }
+.rule { margin: var(--s3) 0 var(--s5); }

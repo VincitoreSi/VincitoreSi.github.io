@@ -1,0 +1,7 @@
+.group { display: grid; grid-template-columns: 220px 1fr; gap: var(--s5); padding: var(--s4) 0; border-top: 1px solid var(--rule); }
+.head { color: var(--accent); padding-top: 4px; }
+.list { color: var(--muted); max-width: none; }
+
+@media (max-width: 860px) {
+  .group { grid-template-columns: 1fr; gap: var(--s2); }
+}

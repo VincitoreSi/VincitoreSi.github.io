@@ -1,0 +1,10 @@
+.masthead { padding: var(--s4) 0 0; }
+.top { display: flex; align-items: center; justify-content: space-between; padding-bottom: var(--s3); color: var(--muted); }
+.name { margin: var(--s6) 0 var(--s5); }
+.meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s3) var(--s6); padding-bottom: var(--s4); color: var(--muted); }
+.links { display: flex; flex-wrap: wrap; gap: var(--s4); margin-left: auto; }
+.links a { color: var(--ink); }
+
+@media (max-width: 720px) {
+  .links { margin-left: 0; }
+}

@@ -1,0 +1,8 @@
+.colophon { margin-top: var(--s7); padding-bottom: var(--s6); }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s6); padding: var(--s5) 0; }
+.head { color: var(--accent); margin-bottom: var(--s3); }
+.links { display: grid; gap: var(--s2); }
+.note { color: var(--muted); }
+.sig { color: var(--muted); padding-top: var(--s4); border-top: 1px solid var(--rule); }
+
+@media (max-width: 720px) { .grid { grid-template-columns: 1fr; gap: var(--s4); } }

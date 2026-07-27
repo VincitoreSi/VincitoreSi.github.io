@@ -1,0 +1,12 @@
+.head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s4); padding-bottom: var(--s5); }
+.title { color: var(--muted); margin-top: var(--s2); }
+.dates { color: var(--muted); flex-shrink: 0; }
+.group { display: grid; grid-template-columns: 220px 1fr; gap: var(--s5); padding: var(--s4) 0; border-top: 1px solid var(--rule); }
+.groupHead { color: var(--accent); padding-top: 5px; }
+.items { display: grid; gap: var(--s3); }
+.item { position: relative; padding-left: var(--s4); }
+.item::before { content: '—'; position: absolute; left: 0; color: var(--muted); }
+
+@media (max-width: 860px) {
+  .group { grid-template-columns: 1fr; gap: var(--s3); }
+}

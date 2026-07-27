@@ -32,5 +32,31 @@ for (const [name, t] of Object.entries(THEMES)) {
   }
 }
 
+// ---- project index ----
+const projectsSrc = readFileSync('src/data/projects.ts', 'utf8')
+const slugs = [...projectsSrc.matchAll(/slug: '([a-z0-9-]+)'/g)].map((m) => m[1])
+const figs = [...projectsSrc.matchAll(/fig: (\d+)/g)].map((m) => Number(m[1]))
+
+slugs.length === 15 ? pass('15 projects in index') : fail(`${slugs.length} projects, expected 15`)
+new Set(slugs).size === slugs.length ? pass('slugs unique') : fail('duplicate slug')
+figs.join(',') === Array.from({ length: 15 }, (_, i) => i + 1).join(',')
+  ? pass('fig numbers are 1..15 in order')
+  : fail(`fig numbers out of order: ${figs.join(',')}`)
+
+// ---- per-project detail files ----
+const detailDir = 'src/data/projects'
+if (existsSync(detailDir)) {
+  const files = readdirSync(detailDir).filter((f) => f.endsWith('.ts'))
+  for (const slug of slugs) {
+    existsSync(join(detailDir, `${slug}.ts`))
+      ? pass(`detail: ${slug}`)
+      : fail(`missing detail file: ${detailDir}/${slug}.ts`)
+  }
+  for (const f of files) {
+    const s = f.replace(/\.ts$/, '')
+    if (!slugs.includes(s)) fail(`orphan detail file: ${f}`)
+  }
+}
+
 console.log(failures ? `\n${failures} failure(s)` : '\nall checks passed')
 process.exit(failures ? 1 : 0)

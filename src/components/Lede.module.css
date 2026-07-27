@@ -1,0 +1,10 @@
+.lede { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s6); padding: var(--s6) 0 var(--s5); }
+.first::first-letter {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 3.1em; line-height: 0.82; float: left;
+  padding: 0.06em 0.09em 0 0; color: var(--accent);
+}
+
+@media (max-width: 860px) {
+  .lede { grid-template-columns: 1fr; gap: var(--s4); }
+}
