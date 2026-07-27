@@ -1,0 +1,21 @@
+.top { display: flex; align-items: center; justify-content: space-between; padding: var(--s4) 0 var(--s3); }
+.back { color: var(--muted); }
+.head { display: grid; grid-template-columns: 58px 1fr auto; align-items: baseline; gap: var(--s4); padding: var(--s6) 0 var(--s4); }
+.fig { color: var(--accent); }
+.year { color: var(--muted); }
+.summary { color: var(--muted); padding-bottom: var(--s4); }
+.note { color: var(--muted); border-left: 1px solid var(--accent); padding-left: var(--s4); margin: var(--s5) 0; max-width: var(--measure); }
+.metrics { display: flex; flex-wrap: wrap; gap: var(--s6); padding: var(--s5) 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.metric { display: grid; gap: var(--s2); }
+.metricValue { color: var(--accent); }
+.metricLabel { color: var(--muted); }
+.block { display: grid; grid-template-columns: 220px 1fr; gap: var(--s5); padding: var(--s5) 0; border-bottom: 1px solid var(--rule); }
+.blockHead { color: var(--accent); padding-top: 5px; }
+.blockBody { display: grid; gap: var(--s4); }
+.stack { color: var(--muted); max-width: none; }
+.repo { margin-top: var(--s2); }
+
+@media (max-width: 860px) {
+  .head { grid-template-columns: 1fr auto; }
+  .block { grid-template-columns: 1fr; gap: var(--s3); }
+}

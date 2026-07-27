@@ -1,0 +1,5 @@
+.plate { margin: var(--s6) 0; }
+.frame { border: 1px solid var(--rule); padding: var(--s5); color: var(--ink); }
+.frame svg { width: 100%; height: auto; }
+.caption { color: var(--muted); padding-top: var(--s3); max-width: var(--measure); }
+.caption span { color: var(--accent); margin-right: var(--s2); }
