@@ -4,3 +4,7 @@ out/
 next-env.d.ts
 *.tsbuildinfo
 .DS_Store
+
+# Raw Nano Banana output and downloaded font binaries. The derived assets under
+# public/figures and public/og are committed, so a build never needs the API key.
+scripts/.imagery-cache/

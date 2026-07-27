@@ -3,7 +3,6 @@ import type { Metadata } from 'next'
 import { projects } from '@/data/projects'
 import type { ProjectDetail } from '@/data/types'
 import DetailShell from '@/components/DetailShell'
-import { plateFor } from '@/components/plates/registry'
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }))
@@ -26,9 +25,29 @@ export async function generateMetadata(
   const { slug } = await params
   const meta = projects.find((p) => p.slug === slug)
   if (!meta) return {}
+  const title = `${meta.title} — Tushar Kumar`
+  const image = {
+    url: `/og/${slug}.jpg`,
+    width: 1200,
+    height: 630,
+    alt: `${meta.title} — project card`,
+  }
   return {
-    title: `${meta.title} — Tushar Kumar`,
+    title,
     description: meta.tagline,
+    openGraph: {
+      title,
+      description: meta.tagline,
+      url: `/work/${slug}/`,
+      type: 'article',
+      images: [image],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description: meta.tagline,
+      images: [image],
+    },
   }
 }
 
@@ -40,5 +59,5 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
   const detail = await loadDetail(slug)
   if (!detail) notFound()
 
-  return <DetailShell meta={meta} detail={detail} plate={plateFor(slug, 'detail')} />
+  return <DetailShell meta={meta} detail={detail} />
 }

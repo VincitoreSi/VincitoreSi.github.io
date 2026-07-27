@@ -35,6 +35,31 @@ export const metadata: Metadata = {
     description: 'AI engineer building retrieval and multi-agent systems.',
     url: 'https://vincitoresi.github.io',
     type: 'website',
+    images: [
+      {
+        url: '/og/home.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Tushar Kumar — AI Engineer, set in broadsheet newspaper type',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Tushar Kumar — AI Engineer',
+    description: 'AI engineer building retrieval and multi-agent systems.',
+    images: [
+      {
+        url: '/og/home.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Tushar Kumar — AI Engineer, set in broadsheet newspaper type',
+      },
+    ],
+  },
+  icons: {
+    icon: '/icon.svg',
+    apple: '/apple-touch-icon.png',
   },
 }
 

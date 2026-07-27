@@ -14,8 +14,13 @@ const detail: ProjectDetail = {
         'The detection stage localizes table regions on the page, and the structure recognition stage parses each detected region into a structured grid. Both stages use convolutional neural networks trained on benchmark document datasets.',
         'The work aimed to improve detection accuracy and structural parsing for document understanding applications.',
       ],
-      diagram: `flowchart LR
-  Doc Image --> CNN Detector --> Table Regions --> CNN Structure Parser --> Row/Column Grid`,
+      diagram: `
+flowchart LR
+  A[Document page] --> B[CNN detector]
+  B --> C[Table regions]
+  C --> D[CNN structure parser]
+  D --> E[Row and column grid]
+      `,
     },
   ],
   metrics: [],

@@ -13,8 +13,16 @@ const detail: ProjectDetail = {
         'PyTorch NLP models were trained to detect toxic content in social media datasets, comparing several classifier architectures on accuracy.',
         'The best models were deployed as a Docker container with a Streamlit web application for interactive testing — users type or paste text and see toxicity predictions from all models side by side.',
       ],
-      diagram: `flowchart LR
-  Social Text --> [Embedding + LSTM / CNN / Transformer] --> Toxicity Score`,
+      diagram: `
+flowchart LR
+  A[Social media text] --> B[Embedding]
+  B --> C[LSTM]
+  B --> D[CNN]
+  B --> E[Transformer]
+  C --> F[Toxicity score]
+  D --> F
+  E --> F
+      `,
     },
   ],
   metrics: [{ value: 'Multiple', label: 'classifiers compared' }],

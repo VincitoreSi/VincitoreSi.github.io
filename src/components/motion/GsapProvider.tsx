@@ -52,20 +52,12 @@ export default function GsapProvider() {
           })
         })
 
-        gsap.utils.toArray<HTMLElement>('[data-plate]').forEach((plate) => {
-          const paths = plate.querySelectorAll<SVGGeometryElement>('[data-draw], [data-draw-accent]')
-          paths.forEach((p) => {
-            const len = typeof p.getTotalLength === 'function' ? p.getTotalLength() : 400
-            gsap.set(p, { strokeDasharray: len, strokeDashoffset: len })
-          })
-          gsap.to(paths, {
-            strokeDashoffset: 0,
-            duration: 1.8,
-            ease: 'power2.out',
-            stagger: 0.15,
-            scrollTrigger: { trigger: plate, start: 'top 75%' },
-          })
-        })
+        /*
+          A stroke-dashoffset draw-on for the inked SVG plates used to live here. The
+          plates are gone — each project page now opens with its generated figure and
+          carries its architecture in the Mermaid series — so the animation had nothing
+          left to select. The figure does its own entrance in CSS, off the main thread.
+        */
 
         gsap.utils.toArray<HTMLElement>('[data-count]').forEach((el) => {
           const target = parseFloat(el.textContent ?? '0')
@@ -86,9 +78,6 @@ export default function GsapProvider() {
           opacity: 1, y: 0, clearProps: 'transform',
         })
         gsap.set('[data-rule]', { scaleX: 1 })
-        gsap.set('[data-plate] [data-draw], [data-plate] [data-draw-accent]', {
-          strokeDasharray: 'none', strokeDashoffset: 0,
-        })
       })
     }
 

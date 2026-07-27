@@ -60,11 +60,18 @@ if (existsSync(detailDir)) {
 
 // ---- anti-slop, spec §6 ----
 if (existsSync('out')) {
-  const cssDir = 'out/_next/static/css'
-  const css = existsSync(cssDir)
-    ? readdirSync(cssDir).filter((f) => f.endsWith('.css'))
-        .map((f) => readFileSync(join(cssDir, f), 'utf8')).join('\n')
-    : ''
+  // Turbopack emits CSS into static/chunks, not the static/css that webpack used. Reading
+  // only the old path meant every check below silently ran against an empty string and
+  // reported "ok" — so collect from both, and refuse to pass if neither yielded anything.
+  const cssDirs = ['out/_next/static/chunks', 'out/_next/static/css']
+  const cssFiles = cssDirs
+    .filter((d) => existsSync(d))
+    .flatMap((d) => readdirSync(d).filter((f) => f.endsWith('.css')).map((f) => join(d, f)))
+  const css = cssFiles.map((f) => readFileSync(f, 'utf8')).join('\n')
+
+  cssFiles.length > 0
+    ? pass(`found ${cssFiles.length} stylesheet(s) to scan`)
+    : fail('no stylesheets found — the anti-slop checks below would pass vacuously')
 
   const forbidden = [
     [/gradient/i, 'gradient (rule 1)'],

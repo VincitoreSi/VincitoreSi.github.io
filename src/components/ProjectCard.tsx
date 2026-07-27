@@ -1,16 +1,21 @@
 import Link from 'next/link'
-import type { ReactNode } from 'react'
 import type { ProjectMeta } from '@/data/types'
+import Figure from './Figure'
 import styles from './ProjectCard.module.css'
 
-export default function ProjectCard({
-  project, plate,
-}: { project: ProjectMeta; plate: ReactNode }) {
+export default function ProjectCard({ project }: { project: ProjectMeta }) {
   return (
     <li className={styles.item} data-reveal>
       <Link href={`/work/${project.slug}/`} className={styles.link}>
         <span className={`label-s ${styles.fig}`}>Fig. {project.fig}</span>
-        <span className={styles.plate} aria-hidden="true">{plate}</span>
+        {/*
+          The card used to show the detail plate shrunk into a 118px box, where its
+          labels were illegible and it was hidden from assistive tech anyway. The
+          generated figure is legible at this size and gives the index real weight.
+        */}
+        <span className={styles.plate} aria-hidden="true">
+          <Figure slug={project.slug} alt="" variant="card" />
+        </span>
         <span className={styles.text}>
           <span className={styles.titleRow}>
             <span className={`display-l ${styles.title}`}>{project.title}</span>

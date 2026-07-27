@@ -8,7 +8,7 @@ export const projects: ProjectMeta[] = [
 
   { slug: 'the-cutting-room', fig: 2, depth: 'full', repo: 'TheCuttingRoom', year: '2026',
     title: 'The Cutting Room',
-    tagline: 'A multi-agent GenAI video pipeline: four agents coordinating over HTTP with no shared filesystem.',
+    tagline: 'A multi-agent GenAI video pipeline: three agents coordinating over HTTP with no shared filesystem.',
     stack: ['FastAPI', 'React 19', 'Gemini', 'Docker'] },
 
   { slug: 'echolearn', fig: 3, depth: 'full', repo: null, year: '2026',
@@ -31,22 +31,22 @@ export const projects: ProjectMeta[] = [
     tagline: 'CNN models for table detection and structural parsing in document understanding.',
     stack: ['PyTorch', 'CNN', 'OpenCV'] },
 
-  { slug: 'facial-emotion-recognition', fig: 7, depth: 'short', repo: 'FacialEmotionRecognition', year: '2025',
+  { slug: 'facial-emotion-recognition', fig: 7, depth: 'full', repo: 'FacialEmotionRecognition', year: '2025',
     title: 'Facial Emotion Recognition',
-    tagline: 'A ResNet-34 fine-tuned on FER-2013 for seven-class expression recognition on a live webcam feed.',
-    stack: ['PyTorch', 'ResNet-34', 'OpenCV'] },
+    tagline: 'A ResNet fine-tuned on FER-2013 for seven-class expression recognition, with the first convolution rebuilt for single-channel 48x48 input.',
+    stack: ['PyTorch', 'ResNet-34', 'torchvision'] },
 
-  { slug: 'electronic-nose', fig: 8, depth: 'short', repo: 'ElectronicNoseSystem', year: '2023 — 24',
+  { slug: 'electronic-nose', fig: 8, depth: 'full', repo: 'ElectronicNoseSystem', year: '2023 — 24',
     title: 'Electronic Nose',
     tagline: 'Gas classification and concentration prediction from 10,000+ sensor readings, running entirely on a Raspberry Pi.',
     stack: ['Python', 'PyTorch', 'Raspberry Pi'] },
 
-  { slug: 'hardware-patch-generation', fig: 9, depth: 'short', repo: 'resource-aware-patch-generation', year: '2022',
+  { slug: 'hardware-patch-generation', fig: 9, depth: 'full', repo: 'resource-aware-patch-generation', year: '2022',
     title: 'Resource-Aware Hardware Patch Generation',
     tagline: 'A resource-aware patch-generation algorithm for functional ECO, solving 10,000+ cases at roughly 90% efficiency.',
-    stack: ['C++', 'Verilog'] },
+    stack: ['Python', 'Verilog', 'Berkeley ABC'] },
 
-  { slug: 'dbms-normalization', fig: 10, depth: 'short', repo: 'AutoNormalizationForTables', year: '2022',
+  { slug: 'dbms-normalization', fig: 10, depth: 'full', repo: 'AutoNormalizationForTables', year: '2022',
     title: 'Automated Table Normalization',
     tagline: 'Normalizes database tables from 1NF through BCNF with step-by-step visualization of each decomposition.',
     stack: ['Python', 'C++', 'SQL'] },
@@ -56,12 +56,12 @@ export const projects: ProjectMeta[] = [
     tagline: 'NLP models compared on accuracy for detecting toxic content in social-media text.',
     stack: ['PyTorch', 'NLP', 'Streamlit'] },
 
-  { slug: 'sketch-colorization', fig: 12, depth: 'short', repo: 'HandMade-Sketch-Colorization', year: '2022',
+  { slug: 'sketch-colorization', fig: 12, depth: 'full', repo: 'HandMade-Sketch-Colorization', year: '2022',
     title: 'Handmade Sketch Colorization',
     tagline: 'Colorizes hand-drawn sketches using classical segmentation, with no deep learning at any stage.',
     stack: ['Python', 'OpenCV', 'Streamlit'] },
 
-  { slug: 'cnn-optimization', fig: 13, depth: 'short', repo: 'optimization-for-cnn', year: '2023',
+  { slug: 'cnn-optimization', fig: 13, depth: 'full', repo: 'optimization-for-cnn', year: '2023',
     title: 'CNN Design via Optimization',
     tagline: 'Treats convolutional architecture selection as an optimization problem rather than a manual search.',
     stack: ['Python', 'PyTorch'] },

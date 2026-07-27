@@ -1,0 +1,78 @@
+.figure {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--fig-aspect, 16 / 9);
+}
+
+/*
+ * Capped, not free-running. At a full-width 16:9 the frontispiece filled the whole
+ * viewport and pushed the title off the top of the page — it read as the subject rather
+ * than as the opening. The cap holds the height while `mask-size: contain` keeps the
+ * drawing centred and undistorted inside the wider box.
+ */
+.band {
+  margin: var(--s5) 0 var(--s6);
+  max-height: min(52vh, 400px);
+}
+
+.card {
+  margin: 0;
+  /* Cards sit in a fixed-width column, so tall figures are capped to keep the row heights
+     from diverging across the index. */
+  max-height: 150px;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  display: block;
+  /* Safari still needs the prefixed properties; unprefixed alone renders nothing there. */
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+  -webkit-mask-size: contain;
+          mask-size: contain;
+}
+
+/*
+ * The mask travels in each file's alpha channel with flat white RGB, so the browser's
+ * default alpha masking applies and no `mask-mode: luminance` branch is needed.
+ */
+.ink {
+  background: var(--ink);
+  -webkit-mask-image: var(--fig-ink);
+          mask-image: var(--fig-ink);
+}
+
+.accent {
+  background: var(--accent);
+  -webkit-mask-image: var(--fig-accent);
+          mask-image: var(--fig-accent);
+}
+
+/*
+ * The figure inks itself in as it enters the viewport — a left-to-right wipe, the
+ * gesture of a drawing being laid down. This is a scroll-driven CSS animation, so it
+ * costs no JavaScript and runs off the main thread.
+ */
+@keyframes figure-ink {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0 0 0); }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .figure {
+      animation: figure-ink linear both;
+      animation-timeline: view();
+      animation-range: entry 15% cover 38%;
+    }
+  }
+}
+
+/*
+ * Everywhere without scroll-driven animation — and under reduced motion — the figure is
+ * simply present. No JS fallback: a drawing that never appears is a far worse failure
+ * than one that appears without ceremony.
+ */

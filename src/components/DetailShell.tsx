@@ -1,16 +1,15 @@
 import Link from 'next/link'
-import type { ReactNode } from 'react'
 import type { ProjectDetail, ProjectMeta } from '@/data/types'
 import { REPO_BASE } from '@/data/types'
 import ThemeToggle from './ThemeToggle'
-import Plate from './Plate'
+import Figure from './Figure'
 import MermaidBlock from './MermaidBlock'
 import Colophon from './Colophon'
 import styles from './DetailShell.module.css'
 
 export default function DetailShell({
-  meta, detail, plate,
-}: { meta: ProjectMeta; detail: ProjectDetail; plate: ReactNode }) {
+  meta, detail,
+}: { meta: ProjectMeta; detail: ProjectDetail }) {
   return (
     <main className="shell">
       <header className={styles.top}>
@@ -25,9 +24,16 @@ export default function DetailShell({
         <span className={`label ${styles.year}`}>{meta.year}</span>
       </div>
 
-      <p className={`body-l ${styles.summary}`} data-reveal>{detail.summary}</p>
+      {/*
+        One drawing per page. The generated figure opens as a frontispiece — the shape of
+        the idea at a glance — and the Mermaid series inside the sections carries the
+        exact architecture. A hand-inked SVG plate used to sit between them saying the
+        same thing a third time; it was removed rather than reconciled, because keeping
+        three drawings in sync is how a plate ends up contradicting the prose.
+      */}
+      <Figure slug={meta.slug} alt={detail.plateCaption} />
 
-      {plate ? <Plate fig={meta.fig} caption={detail.plateCaption}>{plate}</Plate> : null}
+      <p className={`body-l ${styles.summary}`} data-reveal>{detail.summary}</p>
 
       {detail.confidential ? (
         <p className={`body-s ${styles.note}`} data-reveal>

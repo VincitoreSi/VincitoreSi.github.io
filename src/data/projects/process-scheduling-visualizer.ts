@@ -13,8 +13,13 @@ const detail: ProjectDetail = {
         'A practical web portal that visualizes classical CPU scheduling algorithms — FCFS, SJF, Round Robin, Priority Scheduling — by animating them step by step against a shared workload.',
         'Users input a set of processes with arrival times and burst durations, select a scheduling algorithm, and watch the Gantt chart build in real time as processes are scheduled, showing wait times, turnaround times, and context switches.',
       ],
-      diagram: `flowchart LR
-  Workload + Algorithm --> Gantt Chart --> Metrics (Wait Time, Turnaround)`,
+      diagram: `
+flowchart LR
+  A[Shared workload] --> B[Scheduling algorithm]
+  B --> C[Gantt chart]
+  C --> D[Waiting time]
+  C --> E[Turnaround time]
+      `,
     },
   ],
   metrics: [

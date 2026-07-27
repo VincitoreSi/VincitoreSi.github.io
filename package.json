@@ -10,7 +10,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next dev",
     "build": "next build",
-    "audit": "node scripts/audit.mjs"
+    "audit": "node scripts/audit.mjs",
+    "check:mermaid": "node scripts/check-mermaid.mjs",
+    "verify": "npm run build && npm run audit && npm run check:mermaid"
   },
   "keywords": [],
   "author": "",
@@ -30,6 +32,7 @@
     "@types/node": "^26.1.1",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
+    "sharp": "^0.34.5",
     "typescript": "^6.0.3"
   }
 }

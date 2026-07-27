@@ -13,8 +13,13 @@ const detail: ProjectDetail = {
         'An interactive dashboard built with Plotly Dash and Python that visualizes the state of Covid-19 across India — case counts, recoveries, fatalities, and trends over time.',
         'The dashboard pulls from public data sources and renders interactive charts: state-wise distributions, time-series curves, and heatmaps showing outbreak intensity across regions.',
       ],
-      diagram: `flowchart LR
-  Data Sources --> ETL Pipeline --> Plotly Dash --> Interactive Charts + Map`,
+      diagram: `
+flowchart LR
+  A[Data sources] --> B[ETL pipeline]
+  B --> C[Plotly Dash]
+  C --> D[Interactive charts]
+  C --> E[Choropleth map]
+      `,
     },
   ],
   metrics: [{ value: 'Interactive', label: 'India-wide Covid-19 dashboard' }],

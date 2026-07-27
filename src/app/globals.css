@@ -53,7 +53,6 @@ body {
 .label-s    { font-family: var(--font-mono), monospace; font-size: 9.5px; line-height: 1; letter-spacing: 0.14em; text-transform: uppercase; }
 
 .rule { height: 1px; background: var(--rule); border: 0; }
-[data-draw-accent] { stroke: var(--accent); }
 .accent { color: var(--accent); }
 .muted { color: var(--muted); }
 
@@ -67,6 +66,15 @@ body {
   transition: transform 0.35s cubic-bezier(0.33, 1, 0.68, 1);
 }
 .link:hover::after, .link:focus-visible::after { transform: scaleX(1); }
+
+/*
+ * GSAP SplitText wraps each masked line in a box with `overflow: clip` sized to the line
+ * box. The display sizes set line-height below 1 (0.92–0.98, spec §3), so Fraunces'
+ * descenders fall outside that box and were being sliced clean off — "PageIndex" lost the
+ * tail of its g on every project page. Expanding the clip margin restores the glyph while
+ * keeping the reveal, which raising line-height would not do without changing the type.
+ */
+[data-split] > div { overflow-clip-margin: 0.34em; }
 
 :focus-visible { outline: 1px solid var(--accent); outline-offset: 3px; }
 
