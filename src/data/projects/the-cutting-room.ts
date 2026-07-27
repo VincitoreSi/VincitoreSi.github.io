@@ -19,6 +19,24 @@ const detail: ProjectDetail = {
         'Four agents — Blueprint, Score, Render, Review — each a separate FastAPI service communicating over HTTP with no shared filesystem. The hub orchestrates: the Blueprint agent generates a shot-by-shot breakdown via Gemini 2.5 Pro with JSON schema validation and automatic repair loops, the Score agent blends engagement signals into a configurable 0–100 score, and the Render stage produces the final video.',
         'The whole pipeline is containerized as a multi-arch Docker image with a custom ffmpeg build stripped to approximately 130 MB, keeping it deployable on edge hardware.',
       ],
+      diagram: `flowchart LR
+  I[Input Request]
+  H[Hub Orchestrator]
+  B[Blueprint Agent\nShot Breakdown & Repair]
+  S[Score Agent\nEngagement Scoring]
+  R[Render Agent\nVideo Production]
+  V[Review Agent\nQuality Check]
+  O[Output Video]
+  I-->H;
+  H-->B;
+  B-->H;
+  H-->S;
+  S-->H;
+  H-->R;
+  R-->H;
+  H-->V;
+  V-->H;
+  H-->O;`,
     },
     {
       heading: 'Key decisions',

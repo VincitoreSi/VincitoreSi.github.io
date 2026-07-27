@@ -19,6 +19,18 @@ const detail: ProjectDetail = {
         'An event-driven pipeline that accepts a topic and grade level and expands them into a sequenced lesson set. LLM output is constrained by a JSON schema for direct database insertion, eliminating the free-text-to-structured-data translation step.',
         'Media generation routes down two paths — full generative video or programmatic animation over generated stills — chosen by a cost model that keeps per-reel expense viable at scale.',
       ],
+      diagram: [
+        'flowchart LR',
+        '  A[Topic + Grade] --> B[LLM Generator]',
+        '  B --> C[(Database)]',
+        '  C --> D[Event Queue]',
+        '  D --> E[Render Worker]',
+        '  D --> F[Render Worker]',
+        '  D --> G[Render Worker]',
+        '  E --> H[Video Output]',
+        '  F --> H',
+        '  G --> H',
+      ].join('\n'),
     },
     {
       heading: 'Key decisions',

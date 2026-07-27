@@ -13,6 +13,8 @@ const detail: ProjectDetail = {
         'An ML pipeline processing 10,000+ sensor readings for gas classification and concentration prediction, running entirely on a Raspberry Pi with ThingSpeak for data ingestion.',
         'PCA, LDA, and t-SNE were used for feature extraction from raw sensor data, then classifiers were trained for gas type identification alongside regression models for concentration levels. A dashboard provides live sensor visualization and automated predictions.',
       ],
+      diagram: `flowchart LR
+  Sensor Array --> PCA/LDA/t-SNE --> Gas Classifier + Concentration Regressor --> Dashboard`,
     },
   ],
   metrics: [

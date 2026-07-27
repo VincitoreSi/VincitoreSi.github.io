@@ -26,6 +26,8 @@ export interface DetailBlock {
   heading: string
   /** One string per paragraph. */
   body: string[]
+  /** Optional Mermaid diagram source rendered after the body paragraphs. */
+  diagram?: string
 }
 
 /** Detail-page content. One file per project under src/data/projects/. */

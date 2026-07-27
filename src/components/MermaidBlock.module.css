@@ -1,0 +1,22 @@
+.diagram {
+  margin: var(--s5) 0 var(--s3);
+  color: var(--ink);
+  max-width: var(--page);
+  overflow-x: auto;
+}
+
+.diagram svg {
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+  display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+  .diagram :global(.label),
+  .diagram :global(.nodeLabel),
+  .diagram :global(.edgeLabel) {
+    fill: var(--ink) !important;
+    color: var(--ink) !important;
+  }
+}

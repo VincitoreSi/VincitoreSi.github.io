@@ -4,6 +4,7 @@ import type { ProjectDetail, ProjectMeta } from '@/data/types'
 import { REPO_BASE } from '@/data/types'
 import ThemeToggle from './ThemeToggle'
 import Plate from './Plate'
+import MermaidBlock from './MermaidBlock'
 import Colophon from './Colophon'
 import styles from './DetailShell.module.css'
 
@@ -53,6 +54,7 @@ export default function DetailShell({
             {block.body.map((para, i) => (
               <p key={i} className="body">{para}</p>
             ))}
+            {block.diagram ? <MermaidBlock diagram={block.diagram} /> : null}
           </div>
         </section>
       ))}

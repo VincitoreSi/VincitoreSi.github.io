@@ -15,6 +15,8 @@ const detail: ProjectDetail = {
     },
     {
       heading: 'Approach',
+      diagram:
+        'sequenceDiagram\n  participant S as Student\n  participant A as Audio Stream\n  participant R as Retrieval\n  participant LLM\n  S->>A: Listen\n  S->>A: Interrupt\n  A->>R: Query\n  R->>R: Semantic Chunking\n  R->>R: Hybrid Search\n  R->>R: Cross-Encoder Rerank\n  R->>LLM: Top results\n  LLM->>S: Answer\n  A->>S: Audio resumes',
       body: [
         'A real-time platform where teachers curate a bounded corpus and students interrupt the audio mid-sentence to ask questions. The streaming layer runs on full-duplex WebSockets so render work never stalls audio, holding barge-in response under 200 ms.',
         'The retrieval path uses semantic chunking, hybrid BM25 and dense vector search, and cross-encoder reranking over per-student namespaces that enforce tenant isolation. When a student interrupts, the query is vectorized, searched, reranked, and the top result is streamed back — all before audio playback would naturally resume.',

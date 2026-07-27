@@ -13,6 +13,8 @@ const detail: ProjectDetail = {
         'A web application that colorizes hand-drawn sketches using classical (pre-deep-learning) segmentation techniques — edge detection, region growing, and contour analysis.',
         'The pipeline was containerized with Docker and deployed via Streamlit, supporting 100+ concurrent sessions. No deep learning model is used at any stage; the approach relies entirely on traditional computer vision methods.',
       ],
+      diagram: `flowchart LR
+  Hand-drawn Sketch --> Edge Detect --> Region Grow --> Color Map --> Colorized Output`,
     },
   ],
   metrics: [
