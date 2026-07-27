@@ -53,6 +53,7 @@ body {
 .label-s    { font-family: var(--font-mono), monospace; font-size: 9.5px; line-height: 1; letter-spacing: 0.14em; text-transform: uppercase; }
 
 .rule { height: 1px; background: var(--rule); border: 0; }
+[data-draw-accent] { stroke: var(--accent); }
 .accent { color: var(--accent); }
 .muted { color: var(--muted); }
 

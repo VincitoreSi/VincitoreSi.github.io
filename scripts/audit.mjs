@@ -58,5 +58,50 @@ if (existsSync(detailDir)) {
   }
 }
 
+// ---- anti-slop, spec §6 ----
+if (existsSync('out')) {
+  const cssDir = 'out/_next/static/css'
+  const css = existsSync(cssDir)
+    ? readdirSync(cssDir).filter((f) => f.endsWith('.css'))
+        .map((f) => readFileSync(join(cssDir, f), 'utf8')).join('\n')
+    : ''
+
+  const forbidden = [
+    [/gradient/i, 'gradient (rule 1)'],
+    [/backdrop-filter/i, 'backdrop-filter (rule 4)'],
+    [/#(6|7|8|9)[0-9a-f]{2}(f|e)[0-9a-f]|purple|indigo|violet/i, 'purple family (rule 5)'],
+    [/font-family:[^;}]*\b(Inter|Geist)\b/i, 'Inter or Geist (rule 6)'],
+  ]
+  for (const [re, label] of forbidden) {
+    re.test(css) ? fail(`CSS contains ${label}`) : pass(`no ${label}`)
+  }
+
+  const radii = [...css.matchAll(/border-radius:\s*([\d.]+)px/g)].map((m) => Number(m[1]))
+  const worst = radii.length ? Math.max(...radii) : 0
+  worst <= 3 ? pass(`max border-radius ${worst}px (rule 3)`) : fail(`border-radius ${worst}px exceeds 3px (rule 3)`)
+
+  const shadows = (css.match(/box-shadow/g) ?? []).length
+  shadows <= 1 ? pass(`box-shadow count ${shadows} (rule 2)`) : fail(`${shadows} box-shadows, only the theme toggle is permitted (rule 2)`)
+
+  // copy checks across every exported page
+  const html = readdirSync('out', { recursive: true })
+    .filter((f) => String(f).endsWith('.html'))
+    .map((f) => readFileSync(join('out', String(f)), 'utf8')).join('\n')
+
+  const banned = [
+    [/passionate|cutting-edge|innovative|seamless/i, 'banned adjective (rule 16)'],
+    [/Hi,? I'?m /i, '"Hi, I\'m" hero copy (rule 8)'],
+    [/Let'?s build something together/i, '"Let\'s build something together" (rule 15)'],
+    [/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u, 'emoji (rule 7)'],
+  ]
+  for (const [re, label] of banned) {
+    re.test(html) ? fail(`HTML contains ${label}`) : pass(`no ${label}`)
+  }
+
+  // Handle React hydration comments: Fig. <!-- -->1 instead of Fig. 1
+  const figCount = (html.match(/Fig\.\s*(?:<!--\s*-->)?\s*\d+/g) ?? []).length
+  figCount >= 15 ? pass(`${figCount} figure captions`) : fail(`only ${figCount} figure captions, expected >= 15`)
+}
+
 console.log(failures ? `\n${failures} failure(s)` : '\nall checks passed')
 process.exit(failures ? 1 : 0)

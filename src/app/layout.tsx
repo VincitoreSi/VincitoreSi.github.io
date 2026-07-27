@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import { Fraunces, Newsreader, JetBrains_Mono } from 'next/font/google'
 import { THEME_SCRIPT } from '@/lib/theme-script'
+import GsapProvider from '@/components/motion/GsapProvider'
 import './globals.css'
 
 const display = Fraunces({
@@ -47,7 +48,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <GsapProvider />
+      </body>
     </html>
   )
 }
